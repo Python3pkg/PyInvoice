@@ -73,8 +73,8 @@ class TestSimpleInvoice(unittest.TestCase):
 
         # Add items
         invoice.add_item(Item('Item1', 'Item desc', 1, 1.1))
-        invoice.add_item(Item('Item2', 'Item desc', 2, u'2.2'))
-        invoice.add_item(Item(u'Item3', 'Item desc', 3, '3.3'))
+        invoice.add_item(Item('Item2', 'Item desc', 2, '2.2'))
+        invoice.add_item(Item('Item3', 'Item desc', 3, '3.3'))
 
         # After add items
         items = invoice.items
@@ -82,7 +82,7 @@ class TestSimpleInvoice(unittest.TestCase):
         self.assertEqual(items[0].name, 'Item1')
         self.assertEqual(items[0].amount, Decimal('1.1'))
         self.assertEqual(items[1].amount, Decimal('4.4'))
-        self.assertEqual(items[2].name, u'Item3')
+        self.assertEqual(items[2].name, 'Item3')
         self.assertEqual(items[2].amount, Decimal('9.9'))
 
         item_data, item_subtotal = invoice._item_raw_data_and_subtotal()
@@ -123,8 +123,8 @@ class TestSimpleInvoice(unittest.TestCase):
 
         # Add items
         invoice.add_item(Item('Item1', 'Item desc', 1, 1.1))
-        invoice.add_item(Item('Item2', 'Item desc', 2, u'2.2'))
-        invoice.add_item(Item(u'Item3', 'Item desc', 3, '3.3'))
+        invoice.add_item(Item('Item2', 'Item desc', 2, '2.2'))
+        invoice.add_item(Item('Item3', 'Item desc', 3, '3.3'))
         # set tax rate
         invoice.set_item_tax_rate(19)
 
@@ -134,7 +134,7 @@ class TestSimpleInvoice(unittest.TestCase):
         self.assertEqual(items[0].name, 'Item1')
         self.assertEqual(items[0].amount, Decimal('1.1'))
         self.assertEqual(items[1].amount, Decimal('4.4'))
-        self.assertEqual(items[2].name, u'Item3')
+        self.assertEqual(items[2].name, 'Item3')
         self.assertEqual(items[2].amount, Decimal('9.9'))
 
         item_data, item_subtotal = invoice._item_raw_data_and_subtotal()
